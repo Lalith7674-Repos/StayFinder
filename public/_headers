@@ -1,0 +1,22 @@
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/assets/*
+  Content-Type: application/javascript
+
+/*.js
+  Content-Type: application/javascript
+
+/*.css
+  Content-Type: text/css
+
+/*.woff2
+  Content-Type: font/woff2
+
+/*.woff
+  Content-Type: font/woff
+
+/*.ttf
+  Content-Type: font/ttf 

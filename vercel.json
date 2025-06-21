@@ -21,8 +21,46 @@
       "dest": "/api/index.js"
     },
     {
+      "src": "/assets/(.*)",
+      "headers": {
+        "Content-Type": "application/javascript"
+      }
+    },
+    {
+      "src": "/(.*\\.js)",
+      "headers": {
+        "Content-Type": "application/javascript"
+      }
+    },
+    {
+      "src": "/(.*\\.css)",
+      "headers": {
+        "Content-Type": "text/css"
+      }
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
+        }
+      ]
+    },
+    {
+      "source": "/(.*\\.js)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
+        }
+      ]
     }
   ],
   "env": {
