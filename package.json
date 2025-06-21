@@ -3,15 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://lalith7674-repos.github.io/StayFinder",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
-    "start": "node server/server.js",
-    "server": "node server/server.js"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@stripe/react-stripe-js": "^2.4.0",
@@ -39,7 +34,6 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.10",
     "autoprefixer": "^10.4.15",
-    "gh-pages": "^6.1.1",
     "postcss": "^8.4.29",
     "tailwindcss": "^3.3.3"
   }
