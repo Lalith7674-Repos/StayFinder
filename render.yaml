@@ -1,7 +1,8 @@
 services:
   # Frontend Service (Static Site)
-  - type: static
+  - type: web
     name: stayfinder-frontend
+    env: static
     buildCommand: npm run build
     staticPublishPath: ./dist
     routes:
