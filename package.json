@@ -30,5 +30,12 @@
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.5",
     "tailwindcss": "^3.4.17"
+  },
+  "overrides": {
+    "rollup": {
+      "optionalDependencies": {
+        "@rollup/rollup-linux-x64-gnu": "4.21.0"
+      }
+    }
   }
 }
