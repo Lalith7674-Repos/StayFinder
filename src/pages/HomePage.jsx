@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Header from '../components/Header';
 import PropertyCard from '../components/PropertyCard';
 import HeroSection from '../components/HeroSection';
+import { apiHelpers } from '../utils/api';
 
 const HomePage = () => {
   const [listings, setListings] = useState([]);
@@ -21,9 +22,7 @@ const HomePage = () => {
     const fetchListings = async () => {
       try {
         setLoading(true);
-        const response = await fetch('/api/properties');
-        if (!response.ok) throw new Error('Failed to fetch listings');
-        const data = await response.json();
+        const data = await apiHelpers.getProperties();
         const properties = Array.isArray(data.properties) ? data.properties : [];
         setListings(properties);
         setAllListings(properties);
@@ -69,9 +68,7 @@ const HomePage = () => {
     setIsSearching(true);
     setShowSuggestions(false);
     try {
-      const response = await fetch(`/api/properties?city=${encodeURIComponent(city)}`);
-      if (!response.ok) throw new Error('Failed to search listings');
-      const data = await response.json();
+      const data = await apiHelpers.getProperties({ city });
       setListings(Array.isArray(data.properties) ? data.properties : []);
     } catch (err) {
       setError(err.message);
