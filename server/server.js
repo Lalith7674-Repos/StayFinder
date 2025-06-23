@@ -17,17 +17,26 @@ dotenv.config();
 const app = express();
 
 // Middleware
-const corsOptions = {
-  origin: [
-    'http://localhost:3000', // For local development
-    'https://stay-finder-frontend.onrender.com' // Your deployed frontend URL
-  ],
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-  optionsSuccessStatus: 204
-};
+const allowedOrigins = [
+  'http://localhost:5173', // Vite dev server
+  'https://stayfinder-frontend-uuz8.onrender.com' // Your deployed frontend
+];
 
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: function (origin, callback) {
+    // allow requests with no origin (like mobile apps, curl, etc.)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  credentials: true,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  optionsSuccessStatus: 204
+}));
+
 app.use(express.json());
 
 // Allow CORS for static files in /uploads
