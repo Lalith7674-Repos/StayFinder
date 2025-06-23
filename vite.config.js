@@ -7,13 +7,12 @@ export default defineConfig({
     postcss: './src/postcss.config.cjs'
   },
   server: {
-    port: 3000,
-    strictPort: true,
+    port: 5173,
     proxy: {
       '/api': {
-        target: 'https://stay-finder-api.onrender.com',
+        target: process.env.VITE_API_URL || 'http://localhost:10000',
         changeOrigin: true,
-        secure: true,
+        secure: false,
       }
     }
   }

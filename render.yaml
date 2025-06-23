@@ -1,31 +1,9 @@
 services:
-  # Backend API Service
   - type: web
-    name: stay-finder-api
-    env: node
-    plan: free
-    buildCommand: cd server && npm install
-    startCommand: cd server && npm start
-    envVars:
-      - key: NODE_ENV
-        value: production
-      - key: MONGODB_URI
-        sync: false  # You'll set this in Render dashboard
-      - key: JWT_SECRET
-        sync: false  # You'll set this in Render dashboard
-      - key: PORT
-        value: 10000
-    healthCheckPath: /
-    autoDeploy: true
-
-  # Frontend Static Site
-  - type: web
-    name: stay-finder-frontend
+    name: stayfinder-frontend
     env: static
-    plan: free
-    buildCommand: npm install && npm run build
-    staticPublishPath: ./dist
+    buildCommand: cd src && npm install && npm run build
+    staticPublishPath: dist
     envVars:
       - key: VITE_API_URL
-        value: https://stay-finder-api.onrender.com
-    autoDeploy: true 
+        sync: false 

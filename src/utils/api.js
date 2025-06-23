@@ -1,5 +1,13 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+import axios from 'axios';
 
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL || '/api',
+  withCredentials: true,
+});
+
+export default api;
+
+// Helper functions for common API operations
 export const apiCall = async (endpoint, options = {}) => {
   const url = `${API_BASE_URL}/api${endpoint}`;
   
@@ -102,6 +110,4 @@ export const api = {
     method: 'POST',
     body: JSON.stringify(paymentData)
   })
-};
-
-export default api; 
+}; 
